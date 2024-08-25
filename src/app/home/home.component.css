@@ -1,0 +1,13 @@
+.card {
+    transition: transform 0.2s ease;
+  }
+  
+.card:hover {
+    transform: translateY(-5px); /* Example: Lift card on hover */
+  }
+
+  .short-divider {
+    width: 85%; /* Adjust width as needed */
+    border-top: 2px solid #ccc; /* Thickness and color */
+    margin: 20px auto; /* Centering and vertical spacing */
+  }

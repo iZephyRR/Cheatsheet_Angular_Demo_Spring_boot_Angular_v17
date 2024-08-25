@@ -1,0 +1,11 @@
+/* .card {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  } */
+
+.sheet-image {
+  width: 200px;  /* Set your desired width */
+   height: auto; /* This maintains the aspect ratio */
+}

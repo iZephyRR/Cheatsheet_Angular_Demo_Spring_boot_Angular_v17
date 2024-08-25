@@ -1,0 +1,28 @@
+<div class="container mt-5">
+    <h2 class="card-title" style="margin-bottom: 20px;">Cheatsheet List</h2>
+    <div *ngIf="cheatsheets.length>0;else noData">
+        <div class="row">
+            <div class="col-md-6" *ngFor="let sheet of cheatsheets">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title" style="margin-left: 10px;">{{ sheet.title}}</h5>
+                        <div class="card mb-3">
+                            <div class="card-body">                                        
+                                <p class="card-text">Summary : {{ sheet.summary  }}</p>
+                                <p class="card-text">Category : <a [routerLink]="['/category', sheet.categoryId,sheet.category]"> {{ sheet.category }} </a></p>
+                                <p class="card-text">Created By : {{ sheet.createdBy }}</p>
+                                <p class="card-text">Created At : {{ sheet.createdAt }}</p>
+                                <p class="card-text">File : {{ sheet.filename  }}</p>
+                                <img [src]="sanitizedImages[sheet.id]" alt="sheet-image" class="sheet-image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #noData>
+        <p>No data available!!</p>
+    </ng-template>
+</div>
+

@@ -1,0 +1,4 @@
+.sheet-image {
+    width: 200px;  /* Set your desired width */
+     height: auto; /* This maintains the aspect ratio */
+  }

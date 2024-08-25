@@ -1,0 +1,62 @@
+<!-- cheat-sheet-form.component.html -->
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Update CheatSheet</h2>
+            <form #cheatSheetForm="ngForm" (ngSubmit)="update(cheatSheetForm)" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="hidden" name="id" [(ngModel)]="sheet.id" #id="ngModel"  >
+                    <input type="text" id="title" class="form-control" name="title" [(ngModel)]="sheet.title" #title="ngModel" required>
+                    <div *ngIf="title.invalid && title.touched" class="text-danger">
+                        Title is required.
+                    </div>
+                </div>
+  
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea id="summary" class="form-control" name="summary" [(ngModel)]="sheet.summary" #summary="ngModel" required></textarea>
+                    <div *ngIf="summary.invalid && summary.touched" class="text-danger">
+                        Summary is required.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="category" class="form-label">Category</label>
+                    <select id="category" class="form-select" name="category" [(ngModel)]="sheet.categoryId" #category="ngModel" required>
+                        <option [ngValue]="undefined" disabled>Select a category</option>
+                        <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+                    </select>
+                    <div *ngIf="category.invalid && category.touched" class="text-danger">
+                        Category is required.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <input type="file" id="image" class="form-control d-none" name="image" accept="image/*" (change)="onFileChange($event, 'image')" [(ngModel)]="sheet.image" #fileInputImage>
+                    <button type="button" class="btn btn-secondary" (click)="fileInputImage.click()">Upload Image</button>
+                    <div *ngIf="!imagePreview">
+                        <img [src]="sanitizedSheet[sheet.id]" alt="Image Preview" class="img-thumbnail mt-3" style="max-width: 200px;">
+                    </div>
+                    <div *ngIf="imagePreview">
+                        <img [src]="imagePreview" alt="Image Preview" class="img-thumbnail mt-3" style="max-width: 200px;">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <input type="file" id="pdf" class="form-control d-none" name="pdf" accept="application/pdf" (change)="onFileChange($event, 'pdf')"  #fileInputPdf >
+                    <button type="button" class="btn btn-secondary" (click)="fileInputPdf.click()">Upload PDF</button>
+                    <div *ngIf="pdfPreview">
+                      <p class="mt-3">PDF file selected: {{pdfPreview}}</p>
+                    </div>
+                </div>
+                             
+  
+                <button type="submit" class="btn btn-primary" [disabled]="cheatSheetForm.invalid">Update</button>
+                &nbsp;
+                <button type="reset" class="btn btn-secondary" (click)="clearPreview()">Clear</button>
+            </form>
+        </div>
+    </div>
+</div>
+  

@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#" style="margin-left: 30px;">Cheatography</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mx-auto">
+      <li class="nav-item">
+        <button class="nav-link" [routerLink]="['/home']">Home</button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" [routerLink]="['/cheatsheets']">Cheatsheets</button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" [routerLink]="['/cheatsheet/create']" [hidden]="isLoggedInAdmin">Create</button>
+      </li>
+      <li class="nav-item" *ngIf="isLoggedInAdmin">
+        <button class="nav-link" [routerLink]="['/category/create']">Create Category</button>
+      </li>
+    </ul>
+    <ul class="navbar-nav" style="margin-right: 30px;">
+      <li class="dropdown" *ngIf="isLoggedIn">
+        <button class="dropdown-toggle nav-link btn btn-warning text-white" (click)="toggleDropdown()">Setting</button>
+        <ul class="dropdown-menu">
+          <li>
+            <button class="nav-link btn btn-warning text-white" [routerLink]="['/send-document']">
+              <i class='bx bx-log-out'></i> &nbsp; Send-Document
+            </button>
+          </li>
+          <li>
+            <button class="nav-link btn btn-warning text-white" (click)="logout()">
+              <i class='bx bx-log-out'></i> &nbsp; Logout
+            </button>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link btn btn-warning text-white" [routerLink]="['/login']"  *ngIf="!isLoggedIn">
+          <i class='bx bx-log-in'></i>&nbsp; Login
+        </button>
+        <button class="nav-link btn btn-warning text-white" [routerLink]="['/profile']"  *ngIf="isLoggedIn">
+          <i class='bx bx-user'></i>&nbsp; Profile
+        </button>
+      </li>
+      <li class="nav-item" *ngIf="!isLoggedIn">
+        <button class="nav-link btn btn-warning text-white" [routerLink]="['/signup']" >
+          <i class='bx bx-user-plus'></i>&nbsp; Register
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>

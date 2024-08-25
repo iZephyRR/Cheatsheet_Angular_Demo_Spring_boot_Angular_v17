@@ -1,0 +1,39 @@
+.dropdown-toggle {
+  cursor: pointer;
+}
+
+.navbar {
+  position: relative; /* If the dropdown is inside a navbar */
+}
+
+.dropdown-menu {
+    display: none; /* Hidden by default */
+    position: absolute; /* Position relative to the parent */
+    top: 100%; /* Position below the dropdown button */
+    left: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background-color: #ffc107; /* Background color */
+    border: 1px solid #ddd; /* Border around the dropdown */
+    z-index: 1000; /* Ensure it appears above other content */
+    max-width: 00px; /* Adjust as needed */
+    max-height: 300px; /* Limit the height */
+    overflow-y: auto; /* Scrollable if content exceeds max-height */
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block; /* Show the dropdown when .show class is added */
+}
+
+.dropdown-menul li {
+    padding: 8px 12px;
+    font-size: 14px;
+}
+
+.dropdown-menu li button {
+    width: 100%;
+    text-align: left; /* Align text to the left */
+    border: none;
+    background: none;
+}

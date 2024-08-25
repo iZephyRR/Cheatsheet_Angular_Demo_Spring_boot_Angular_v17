@@ -1,0 +1,10 @@
+<div *ngIf="message" class="message-box" [ngClass]="message.type">
+  <span  *ngIf="message.type === 'confirm'" class="close" (click)="close()">&times;</span>
+  <div class="message-content">
+    <p>{{ message.text }}</p>
+    <div class="button-container" *ngIf="message.type === 'confirm'">
+      <button class="btn btn-alert" (click)="cancel()">Cancel</button>&nbsp;
+      <button class="btn btn-primary" (click)="confirm()">Confirm</button>
+    </div>
+  </div>
+</div>

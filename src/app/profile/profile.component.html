@@ -1,0 +1,47 @@
+<div class="user-profile">
+    <img [src]="sanitizedImages[user.id]" alt="{{user.name}}" class="profile-image">
+    <h2>{{user.name}}</h2>
+    <p>{{user.email}}</p>
+  </div>
+  
+  <div class="short-divider"></div>
+
+  <div class="container mt-5" *ngIf="!isLoggedInAdmin">
+    <h2 class="card-title" style="margin-bottom: 20px;">Cheatsheet List</h2>
+    <div *ngIf="cheatsheets.length>0;else noData">
+      <div class="row">
+        <div class="col-md-6" *ngFor="let sheet of cheatsheets">
+          <div class="card mb-3">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center" style="margin-bottom: 10px;">
+                <h5 class="card-title" style="margin-left: 10px;">{{ sheet.title}}</h5>
+                <div>
+                  <button class="btn btn-primary btn-sm" (click)="updateSheet(sheet.id)"><!--  -->
+                    <i class='bx bx-edit'></i> Update
+                  </button>&nbsp;
+                  <button class="btn btn-danger btn-sm" (click)="deleteSheet(sheet.id)" *ngIf="!sheet.isDeleted"> <!---->
+                    <i class='bx bx-trash'></i> Delete
+                  </button>
+                </div>
+              </div> 
+              <div class="card mb-3">
+                <div class="card-body">
+                  <p class="card-text">Summary : {{ sheet.summary  }}</p>
+                  <p class="card-text">Category : <a [routerLink]="['/category',sheet.categoryId,sheet.category]"> {{ sheet.category }} </a></p>
+                  <p class="card-text">Created By : {{ sheet.createdBy }}</p>
+                  <p class="card-text">Created At : {{ sheet.createdAt }}</p>
+                  <p class="card-text">File : {{ sheet.filename  }}</p>
+                  <img [src]="sanitizedSheet[sheet.id]" alt="sheet-image" class="sheet-image">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noData>
+      <p>No data available!!</p>
+    </ng-template>
+  </div>
+    
+

@@ -1,0 +1,24 @@
+.user-profile {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  
+  .sheet-image {
+    width: 200px;  /* Set your desired width */
+     height: auto; /* This maintains the aspect ratio */
+  }
+
+  .short-divider {
+    width: 85%; /* Adjust width as needed */
+    border-top: 2px solid #ccc; /* Thickness and color */
+    margin: 20px auto; /* Centering and vertical spacing */
+  }
+  
+  
